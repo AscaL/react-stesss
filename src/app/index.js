@@ -10,10 +10,10 @@ class HelloWorld extends React.Component {
   render() {
     return (
     < div >
-      Hello World!
+      Hello {this.props.name}!
     < /div>
     )
   }
 };
 
-ReactDOM.render( < HelloWorld / > , document.getElementById('app'));
+ReactDOM.render( < HelloWorld name="yo" / > , document.getElementById('app'));
