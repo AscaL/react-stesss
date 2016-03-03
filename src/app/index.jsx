@@ -1,7 +1,9 @@
+'use strict'
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-var HelloWorld = React.createClass({
+let HelloWorld = React.createClass({
   render: function() {
     return (
       <div>
