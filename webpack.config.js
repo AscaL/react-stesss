@@ -23,7 +23,7 @@ module.exports = {
   //    filename: 'main.js'
   //  },
 
-  entry: APP_DIR + '/index.jsx',
+  entry: APP_DIR + '/index.js',
   output: {
     path: BUILD_DIR,
     filename: 'index_bundle.js'
