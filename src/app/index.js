@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 const USER_DATA = {
-  name: 'Brollo',
+  name: 'Emanuele Orfanelli',
   username: 'AscaL',
   image: 'https://avatars3.githubusercontent.com/u/8880943?v=3&u=9ddb1925dc47817cd05101412f92fb9cfc3ddcf2&s=140'
 }
