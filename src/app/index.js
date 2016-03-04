@@ -9,7 +9,7 @@ const USER_DATA = {
   image: 'https://avatars3.githubusercontent.com/u/8880943?v=3&u=9ddb1925dc47817cd05101412f92fb9cfc3ddcf2&s=140'
 }
 
-class ProfilePic extends React.Compontent {
+class ProfilePic extends React.Component {
   render() {
     return (
       <img src={this.props.imageUrl} style={{height: 100, width: 100}} />
