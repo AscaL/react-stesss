@@ -2,6 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import routes from './config/routes';
 
 const USER_DATA = {
   name: 'Emanuele Orfanelli',
@@ -72,6 +73,6 @@ class Avatar extends React.Component {
 }
 
 ReactDOM.render(
-  < Avatar user={USER_DATA} />,
+  routes,
   document.getElementById('app')
 );
