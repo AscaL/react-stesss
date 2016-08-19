@@ -2,19 +2,18 @@ import React from 'react';
 import { PropTypes } from 'react';
 import { transparentBg } from '../styles';
 
-class Prompt extends React.Component {
-	render() {
+function Prompt (props) {
 		return (
 			<div className="jumbotron col-sm-6 col-sm-offset-3 text-center" style={transparentBg}>
-				<h1>{this.props.header}</h1>
+				<h1>{props.header}</h1>
 				<div className="col-sm-12">
-					<form onSubmit={this.props.onSubmitUser}>
+					<form onSubmit={props.onSubmitUser}>
 						<div className="form-group">
 							<input
 								className="form-control"
 								placeholder="GitHub Username"
-								onChange={this.props.onUpdateUser}
-								value={this.props.username}
+								onChange={props.onUpdateUser}
+								value={props.username}
 								type="text" />
 						</div>
 						<div className="form-group col-sm-4 col-sm-offset-4">
@@ -28,11 +27,13 @@ class Prompt extends React.Component {
 				</div>
 			</div>
 		)
-	}
 }
 
 Prompt.propTypes = {
-	header: PropTypes.string.isRequired
+	header: PropTypes.string.isRequired,
+	onUpdateUser: PropTypes.func.isRequired,
+	onSubmitUser: PropTypes.func.isRequired,
+	username: PropTypes.string.isRequired
 }
 
 module.exports = Prompt;
