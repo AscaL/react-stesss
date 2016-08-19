@@ -1,62 +1,62 @@
 import React from 'react';
+import Prompt from '../components/Prompt';
 
 class PromptContainer extends React.Component {
 
-  constructor(props) {
-    super(props);
-    console.log('this:', this);
-    this.state = {
-      username: ''
-    }
-  }
+	constructor(props) {
+		super(props);
+		this.handleUpdateUser = this.handleUpdateUser.bind(this)
+		this.handleSubmitUser = this.handleSubmitUser.bind(this)
+		this.state = {
+			username: ''
+		}
+	}
 
-  onUpdateUser(e) {
-    this.setState({
-      username: e.target.value
-    })
-  }
+	handleUpdateUser(e) {
+		console.log('onupdateuser');
+		this.setState({
+			username: e.target.value
+		})
+	}
 
-  onSubmitUser(e) {
-    e.preventDefault();
-    let username = this.state.username;
-    this.setState({
-      username: ''
-    });
+	handleSubmitUser(e) {
+		console.log('onsubuser');
+		e.preventDefault();
+		let username = this.state.username;
+		this.setState({
+			username: ''
+		});
 
-    if (this.props.routeParams.playerOne) {
-      //battle
-    } else {
-      //go to player2
-    }
-  }
+		if (this.props.routeParams.playerOne) {
+			console.log('1 ', this.context);
+			this.context.router.push({
+				pathname: '/battle',
+				query: {
+					playerOne: this.props.routeParams.playerOne,
+					playerTwo: this.state.username
+				}
+			})
+		} else {
+			console.log(this.context);
+			this.context.router.push('/playerTwo/' + this.state.username)
+		}
+	}
 
 
-  render() {
-    return(
-      <div className="jumbotron col-sm-6 col-sm-offset-3 text-center">
-        <h1>{this.props.route.header}</h1>
-        <div className="col-sm-12">
-          <form onSubmit={this.onSubmitUser}>
-            <div className="form-group">
-              <input
-                className="form-control"
-                placeholder="GitHub Username"
-                onChange={this.onUpdateUser}
-                value={this.state.username}
-                type="text" />
-            </div>
-            <div className="form-group col-sm-4 col-sm-offset-4">
-      <button
-      className="btn btn-block btn-success"
-      type="submit">
-      Continue
-      </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    );
-  }
+	render() {
+		return (
+			<Prompt
+				onSubmitUser={this.handleSubmitUser}
+				onUpdateUser={this.handleUpdateUser}
+				header={this.props.route.header}
+				username={this.state.username}
+				/>
+		);
+	}
+}
+
+PromptContainer.contextTypes = {
+	router: React.PropTypes.object.isRequired
 }
 
 module.exports = PromptContainer;
