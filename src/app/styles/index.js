@@ -1,7 +1,7 @@
-let styles = {
+const styles = {
   transparentBg: {
-    background: 'transparent'
-  }
+    background: 'transparent',
+  },
 };
 
 module.exports = styles;
