@@ -1,14 +1,13 @@
 import React from 'react';
 import ConfirmBattle from '../components/ConfirmBattle';
-
-
+import { helpers } from '../utils/githubHelpers';
 
 class ConfirmBattleContainer extends React.Component {
   constructor () {
     super();
     this.state = {
       isLoading: true,
-      playerInfo: [],
+      playersInfo: [],
     }
   }
 
@@ -17,9 +16,23 @@ class ConfirmBattleContainer extends React.Component {
   }
 
   componentDidMount () {
+    console.log('this:', this);
     let query = this.props.location.query
     console.log('query:', query);
-    //get info from github and update state
+    helpers.getPlayersInfo([query.playerOne, query.playerTwo])
+      .then((players) => {
+      this.setState({
+        isLoading: false,
+        playersInfo: [players[0], players[1]],
+      })
+    })
+//    .then(function (players) {
+//      console.log('this inside:', this);
+//      this.setState({
+//        isLoading: false,
+//        playersInfo: [players[0], players[1]]
+//      })
+//    }.bind(this))
   }
 
   componentWillUnmount () {
@@ -30,7 +43,7 @@ class ConfirmBattleContainer extends React.Component {
     return (
       <ConfirmBattle
         isLoading={this.state.isLoading}
-        playerInfo={this.state.playerInfo}
+        playersInfo={this.state.playersInfo}
         />
     )
   }
