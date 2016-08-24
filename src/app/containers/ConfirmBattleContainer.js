@@ -64,7 +64,7 @@ class ConfirmBattleContainer extends React.Component {
   }
 }
 
-ConfirmBattle.contextTypes = {
+ConfirmBattleContainer.contextTypes = {
   router: React.PropTypes.object.isRequired,
 };
 
