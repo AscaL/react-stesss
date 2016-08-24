@@ -5,10 +5,6 @@ import { Link } from 'react-router';
 import { UserDetails } from './UserDetails';
 import { UserDetailsWrapper } from './UserDetailsWrapper';
 
-//console.log('space:', space);
-//console.log('transparentBg:', transparentBg);
-console.log('styles:', styles);
-
 function puke (obj) {
   return <pre> {JSON.stringify(obj, null, ' ')}</pre>
 }

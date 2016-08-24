@@ -5,6 +5,8 @@ import { helpers } from '../utils/githubHelpers';
 class ConfirmBattleContainer extends React.Component {
   constructor () {
     super();
+    console.log('this1:', this.context);
+    this.handleInitiateBattle = this.handleInitiateBattle.bind(this);
     this.state = {
       isLoading: true,
       playersInfo: [],
@@ -12,13 +14,13 @@ class ConfirmBattleContainer extends React.Component {
   }
 
   componentWillMount () {
+    console.log('this2:', this.context);
     console.log('com will mount');
   }
 
   componentDidMount () {
-    console.log('this:', this);
+    console.log('this3:', this.context);
     let query = this.props.location.query
-    console.log('query:', query);
     helpers.getPlayersInfo([query.playerOne, query.playerTwo])
       .then((players) => {
       this.setState({
@@ -40,8 +42,10 @@ class ConfirmBattleContainer extends React.Component {
   }
 
   handleInitiateBattle() {
+    console.log('this4:', this.context);
+    console.log('this handle initiate battle:', this);
     this.context.router.push({
-      pathname: `/results`,
+      pathname: '/results',
       state: {
         //this pushes playersInfo to /results
         playersInfo: this.state.playersInfo
